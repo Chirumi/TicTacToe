@@ -1,0 +1,40 @@
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameBoard {
+    display: grid;
+    font-size: 50px;
+    grid-template: 100px 100px 100px / 100px 100px 100px;
+}
+
+.box1,
+.box2,
+.box3,
+.box4,
+.box5,
+.box6,
+.box7,
+.box8,
+.box9 {
+    text-align: center;
+    border: 1px solid black;
+    border-right: none;
+    border-top: none;
+}
+
+.box1,
+.box4,
+.box7 {
+    border-left: none;
+}
+
+.box7,
+.box8,
+.box9 {
+    border-bottom: none;
+}
+
+
