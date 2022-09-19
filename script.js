@@ -1,9 +1,4 @@
 // Pseudo-code
-// Make it impossible to pick index that has a X or O already
-// Each square should correspond to an index number in the above object (1 to 9)
-// Make MULTIPLE win conditions (If 3 Xs or Os in a row on index 1,5,9/1,2,3/1,4,7 etc... = game over)
-// Determine winner by checking if there are 3 Xs in a row (P1 win) or 3 Os in a row (P2 win)
-// Make pop up message (Player 1 or Player 2 has won!)
 // Make reset button similar to the one I did on Rock Paper Scissors
 
 let gameBoard = {
@@ -31,12 +26,12 @@ box9.textContent = gameBoard.gamePlay[8]
 
 let boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
 
-let playerMaker = (name) => {
-    return {name}
+let playerMaker = (name, game) => {
+    return {name, game}
 }
 
-let player1 = playerMaker("Zul")
-let player2 = playerMaker("Enemy")
+let player1 = playerMaker("Zul", [])
+let player2 = playerMaker("Enemy", [])
 
 for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
     boxes[i].addEventListener("click", () => {
@@ -44,13 +39,88 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
             if (gameBoard.gamePlay[gameBoard.gamePlay.length - 1] === "X") {
                 gameBoard.gamePlay.push("O")
                 boxes[i].textContent = "O"
-                console.log(gameBoard.gamePlay)
+                player2.game.push(i + 1)
+
+                console.log(player1)
+                console.log(player2)
+
+                // Check wincon here 
+                winConditionP1()
+                winConditionP2()
+
             } else {
                 gameBoard.gamePlay.push("X")
                 boxes[i].textContent = "X"
-                console.log(gameBoard.gamePlay)
+                player1.game.push(i + 1)
+
+                console.log(player1)
+                console.log(player2)
+
+                // Check wincon here
+                winConditionP1()
+                winConditionP2()
+                
             }
         } 
     })
 }
+
+//WINCON
+function winConditionP1 () {
+    if (player1.game.includes(1) && player1.game.includes(4) && player1.game.includes(7)) {
+        console.log("Player 1 wins!")
+    } else if (player1.game.includes(1) && player1.game.includes(5) && player1.game.includes(9)) {
+        console.log("Player 1 wins!")
+
+    } else if (player1.game.includes(1) && player1.game.includes(2) && player1.game.includes(3)) {
+        console.log("Player 1 wins!")
+
+    } else if (player1.game.includes(2) && player1.game.includes(5) && player1.game.includes(8)) {
+        console.log("Player 1 wins!")
+
+    } else if (player1.game.includes(3) && player1.game.includes(5) && player1.game.includes(7)) {
+        console.log("Player 1 wins!")
+
+    } else if (player1.game.includes(4) && player1.game.includes(5) && player1.game.includes(6)) {
+        console.log("Player 1 wins!")
+
+    } else if (player1.game.includes(3) && player1.game.includes(6) && player1.game.includes(9)) {
+        console.log("Player 1 wins!")
+
+    } else if (player1.game.includes(7) && player1.game.includes(8) && player1.game.includes(9)) {
+        console.log("Player 1 wins!")
+        
+    } 
+}
+
+function winConditionP2 () {
+    if (player2.game.includes(1) && player2.game.includes(4) && player2.game.includes(7)) {
+        console.log("Player 2 wins!")
+    } else if (player2.game.includes(1) && player2.game.includes(5) && player2.game.includes(9)) {
+        console.log("Player 2 wins!")
+
+    } else if (player2.game.includes(1) && player2.game.includes(2) && player2.game.includes(3)) {
+        console.log("Player 2 wins!")
+
+    } else if (player2.game.includes(2) && player2.game.includes(5) && player2.game.includes(8)) {
+        console.log("Player 2 wins!")
+
+    } else if (player2.game.includes(3) && player2.game.includes(5) && player2.game.includes(7)) {
+        console.log("Player 2 wins!")
+
+    } else if (player2.game.includes(4) && player2.game.includes(5) && player2.game.includes(6)) {
+        console.log("Player 2 wins!")
+
+    } else if (player2.game.includes(3) && player2.game.includes(6) && player2.game.includes(9)) {
+        console.log("Player 2 wins!")
+
+    } else if (player2.game.includes(7) && player2.game.includes(8) && player2.game.includes(9)) {
+        console.log("Player 2 wins!")
+        
+    } 
+}
+
+// Find a more concise way to do wincon for player1
+// Then make wincon for player2 as well
+
 
