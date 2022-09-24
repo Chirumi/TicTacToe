@@ -59,17 +59,8 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
                     footer.appendChild(reset)
                     
                     reset.addEventListener("click", () => {
-                        winner = []
-                        gameBoard.gamePlay = []
-                        player1.game = []
-                        player2.game = []
-
                         footer.removeChild(reset)
-
-                        boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
-                        for (let i = 0; i < boxes.length; i++) {
-                            boxes[i].textContent = ""
-                        }
+                        resetGame()
                     })
                 }
 
@@ -93,22 +84,25 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
                     footer.appendChild(reset)
 
                     reset.addEventListener("click", () => {
-                        winner = []
-                        gameBoard.gamePlay = []
-                        player1.game = []
-                        player2.game = []
-
                         footer.removeChild(reset)
-
-                        boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
-                        for (let i = 0; i < boxes.length; i++) {
-                            boxes[i].textContent = ""
-                        }
+                        resetGame()
                     })
                 }
             }
         } 
     })
+}
+
+function resetGame () {
+    winner = []
+    gameBoard.gamePlay = []
+    player1.game = []
+    player2.game = []
+
+    boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].textContent = ""
+    }
 }
 
 
