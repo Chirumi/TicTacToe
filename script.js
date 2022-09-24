@@ -5,6 +5,8 @@ let gameBoard = {
     gamePlay: []
 } 
 
+let footer = document.getElementById("footer")
+
 let box1 = document.querySelector(".box1")
 box1.textContent = gameBoard.gamePlay[0]
 let box2 = document.querySelector(".box2")
@@ -32,6 +34,7 @@ let playerMaker = (name, game) => {
 
 let player1 = playerMaker("Zul", [])
 let player2 = playerMaker("Enemy", [])
+let winner = []
 
 for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
     boxes[i].addEventListener("click", () => {
@@ -48,6 +51,15 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
                 winConditionP1()
                 winConditionP2()
 
+                if (winner[0] === "P1" || winner[0] === "P2") {
+                    boxes = []
+
+                    let reset = document.createElement("button")
+                    reset.textContent = "RESET"
+                    footer.appendChild(reset)
+                    
+                }
+
             } else {
                 gameBoard.gamePlay.push("X")
                 boxes[i].textContent = "X"
@@ -60,35 +72,57 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
                 winConditionP1()
                 winConditionP2()
                 
+                if (winner[0] === "P1" || winner[0] === "P2") {
+                    boxes = []
+
+                    let reset = document.createElement("button")
+                    reset.textContent = "RESET"
+                    footer.appendChild(reset)
+
+                    reset.addEventListener("click", )
+                }
             }
         } 
     })
 }
 
+
+
+
 //WINCON
 function winConditionP1 () {
     if (player1.game.includes(1) && player1.game.includes(4) && player1.game.includes(7)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
+
+
     } else if (player1.game.includes(1) && player1.game.includes(5) && player1.game.includes(9)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
 
     } else if (player1.game.includes(1) && player1.game.includes(2) && player1.game.includes(3)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
 
     } else if (player1.game.includes(2) && player1.game.includes(5) && player1.game.includes(8)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
 
     } else if (player1.game.includes(3) && player1.game.includes(5) && player1.game.includes(7)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
 
     } else if (player1.game.includes(4) && player1.game.includes(5) && player1.game.includes(6)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
 
     } else if (player1.game.includes(3) && player1.game.includes(6) && player1.game.includes(9)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
 
     } else if (player1.game.includes(7) && player1.game.includes(8) && player1.game.includes(9)) {
         console.log("Player 1 wins!")
+        winner.push("P1")
         
     } 
 }
@@ -96,31 +130,38 @@ function winConditionP1 () {
 function winConditionP2 () {
     if (player2.game.includes(1) && player2.game.includes(4) && player2.game.includes(7)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
     } else if (player2.game.includes(1) && player2.game.includes(5) && player2.game.includes(9)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
 
     } else if (player2.game.includes(1) && player2.game.includes(2) && player2.game.includes(3)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
 
     } else if (player2.game.includes(2) && player2.game.includes(5) && player2.game.includes(8)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
 
     } else if (player2.game.includes(3) && player2.game.includes(5) && player2.game.includes(7)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
 
     } else if (player2.game.includes(4) && player2.game.includes(5) && player2.game.includes(6)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
 
     } else if (player2.game.includes(3) && player2.game.includes(6) && player2.game.includes(9)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
 
     } else if (player2.game.includes(7) && player2.game.includes(8) && player2.game.includes(9)) {
         console.log("Player 2 wins!")
+        winner.push("P2")
         
     } 
 }
-
-// Find a more concise way to do wincon for player1
-// Then make wincon for player2 as well
+// DOWNSIDE = SOME CODE ARE ACCESSIBLE GLOBALLY (WHICH IS OPPOSITE OF WHAT THE EXERCISE IS ABOUT)
+// THEREFORE TRY TO OPTIMIZE CODE FOR SECURITY (USING MODULUS, FACTORIES ETC ETC)
 
 
