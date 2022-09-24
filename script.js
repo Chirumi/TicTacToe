@@ -1,10 +1,8 @@
-// Pseudo-code
-// Make reset button similar to the one I did on Rock Paper Scissors
-
 let gameBoard = {
     gamePlay: []
 } 
 
+let header = document.getElementById("header")
 let footer = document.getElementById("footer")
 
 let box1 = document.querySelector(".box1")
@@ -44,13 +42,11 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
                 boxes[i].textContent = "O"
                 player2.game.push(i + 1)
 
-                console.log(player1)
-                console.log(player2)
-
                 // Check wincon here 
                 winConditionP1()
                 winConditionP2()
 
+                // If game over
                 if (winner[0] === "P1" || winner[0] === "P2") {
                     boxes = []
 
@@ -69,13 +65,11 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
                 boxes[i].textContent = "X"
                 player1.game.push(i + 1)
 
-                console.log(player1)
-                console.log(player2)
-
                 // Check wincon here
                 winConditionP1()
                 winConditionP2()
                 
+                // If game over
                 if (winner[0] === "P1" || winner[0] === "P2") {
                     boxes = []
 
@@ -99,48 +93,71 @@ function resetGame () {
     player1.game = []
     player2.game = []
 
+    let removeMsg = document.getElementById("winMsg")
+    removeMsg.remove()
+
     boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
     for (let i = 0; i < boxes.length; i++) {
         boxes[i].textContent = ""
     }
 }
 
-
-
-
 //WINCON
 function winConditionP1 () {
     if (player1.game.includes(1) && player1.game.includes(4) && player1.game.includes(7)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
-
     } else if (player1.game.includes(1) && player1.game.includes(5) && player1.game.includes(9)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
     } else if (player1.game.includes(1) && player1.game.includes(2) && player1.game.includes(3)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
     } else if (player1.game.includes(2) && player1.game.includes(5) && player1.game.includes(8)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
     } else if (player1.game.includes(3) && player1.game.includes(5) && player1.game.includes(7)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
     } else if (player1.game.includes(4) && player1.game.includes(5) && player1.game.includes(6)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
     } else if (player1.game.includes(3) && player1.game.includes(6) && player1.game.includes(9)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
 
     } else if (player1.game.includes(7) && player1.game.includes(8) && player1.game.includes(9)) {
-        console.log("Player 1 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 1 wins!"
+        header.appendChild(winMsg)
         winner.push("P1")
         
     } 
@@ -148,34 +165,58 @@ function winConditionP1 () {
 
 function winConditionP2 () {
     if (player2.game.includes(1) && player2.game.includes(4) && player2.game.includes(7)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
     } else if (player2.game.includes(1) && player2.game.includes(5) && player2.game.includes(9)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
 
     } else if (player2.game.includes(1) && player2.game.includes(2) && player2.game.includes(3)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
 
     } else if (player2.game.includes(2) && player2.game.includes(5) && player2.game.includes(8)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
 
     } else if (player2.game.includes(3) && player2.game.includes(5) && player2.game.includes(7)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
 
     } else if (player2.game.includes(4) && player2.game.includes(5) && player2.game.includes(6)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
 
     } else if (player2.game.includes(3) && player2.game.includes(6) && player2.game.includes(9)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
 
     } else if (player2.game.includes(7) && player2.game.includes(8) && player2.game.includes(9)) {
-        console.log("Player 2 wins!")
+        let winMsg = document.createElement("div")
+        winMsg.id = "winMsg"
+        winMsg.textContent = "Player 2 wins!"
+        header.appendChild(winMsg)
         winner.push("P2")
         
     } 
