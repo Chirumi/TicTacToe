@@ -102,122 +102,66 @@ function resetGame () {
     }
 }
 
+function winMessage (num) {
+    let winMsg = document.createElement("div")
+    winMsg.id = "winMsg"
+    winMsg.textContent = `Player ${num} wins!`
+    header.appendChild(winMsg)
+    winner.push(`P${num}`)
+}
+
 //WINCON
 function winConditionP1 () {
     if (player1.game.includes(1) && player1.game.includes(4) && player1.game.includes(7)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(1) && player1.game.includes(5) && player1.game.includes(9)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(1) && player1.game.includes(2) && player1.game.includes(3)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(2) && player1.game.includes(5) && player1.game.includes(8)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(3) && player1.game.includes(5) && player1.game.includes(7)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(4) && player1.game.includes(5) && player1.game.includes(6)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(3) && player1.game.includes(6) && player1.game.includes(9)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
+        winMessage(1)
 
     } else if (player1.game.includes(7) && player1.game.includes(8) && player1.game.includes(9)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 1 wins!"
-        header.appendChild(winMsg)
-        winner.push("P1")
-        
+        winMessage(1)
     } 
 }
 
 function winConditionP2 () {
     if (player2.game.includes(1) && player2.game.includes(4) && player2.game.includes(7)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
+
     } else if (player2.game.includes(1) && player2.game.includes(5) && player2.game.includes(9)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
 
     } else if (player2.game.includes(1) && player2.game.includes(2) && player2.game.includes(3)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
 
     } else if (player2.game.includes(2) && player2.game.includes(5) && player2.game.includes(8)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
 
     } else if (player2.game.includes(3) && player2.game.includes(5) && player2.game.includes(7)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
 
     } else if (player2.game.includes(4) && player2.game.includes(5) && player2.game.includes(6)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
 
     } else if (player2.game.includes(3) && player2.game.includes(6) && player2.game.includes(9)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
 
     } else if (player2.game.includes(7) && player2.game.includes(8) && player2.game.includes(9)) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
-        winMsg.textContent = "Player 2 wins!"
-        header.appendChild(winMsg)
-        winner.push("P2")
+        winMessage(2)
         
     } 
 }
