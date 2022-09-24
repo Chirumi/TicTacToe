@@ -64,7 +64,8 @@ let ticTacToe = (function () {
         winner.push(`P${num}`)
     }
 
-    for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
+    // GAMEPLAY
+    for (let i = 0; i < boxes.length; i++) { 
         boxes[i].addEventListener("click", () => {
             if (boxes[i].textContent === "") {
                 if (gameBoard.gamePlay[gameBoard.gamePlay.length - 1] === "X") {
