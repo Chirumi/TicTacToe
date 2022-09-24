@@ -1,3 +1,6 @@
+// DOWNSIDE = SOME CODE ARE ACCESSIBLE GLOBALLY (WHICH IS OPPOSITE OF WHAT THE EXERCISE IS ABOUT)
+// THEREFORE TRY TO OPTIMIZE CODE FOR SECURITY (USING MODULUS, FACTORIES ETC ETC)
+
 let gameBoard = {
     gamePlay: []
 } 
@@ -33,6 +36,29 @@ let playerMaker = (name, game) => {
 let player1 = playerMaker("Zul", [])
 let player2 = playerMaker("Enemy", [])
 let winner = []
+
+function resetGame () {
+    winner = []
+    gameBoard.gamePlay = []
+    player1.game = []
+    player2.game = []
+
+    let removeMsg = document.getElementById("winMsg")
+    removeMsg.remove()
+
+    boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].textContent = ""
+    }
+}
+
+function winMessage (num) {
+    let winMsg = document.createElement("div")
+    winMsg.id = "winMsg"
+    winMsg.textContent = `Player ${num} wins!`
+    header.appendChild(winMsg)
+    winner.push(`P${num}`)
+}
 
 for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
     boxes[i].addEventListener("click", () => {
@@ -87,30 +113,7 @@ for (let i = 0; i < boxes.length; i++) { // Alternates X and O, starting with X
     })
 }
 
-function resetGame () {
-    winner = []
-    gameBoard.gamePlay = []
-    player1.game = []
-    player2.game = []
-
-    let removeMsg = document.getElementById("winMsg")
-    removeMsg.remove()
-
-    boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
-    for (let i = 0; i < boxes.length; i++) {
-        boxes[i].textContent = ""
-    }
-}
-
-function winMessage (num) {
-    let winMsg = document.createElement("div")
-    winMsg.id = "winMsg"
-    winMsg.textContent = `Player ${num} wins!`
-    header.appendChild(winMsg)
-    winner.push(`P${num}`)
-}
-
-//WINCON
+//WINCON Player 1
 function winConditionP1 () {
     if (player1.game.includes(1) && player1.game.includes(4) && player1.game.includes(7)) {
         winMessage(1)
@@ -138,6 +141,7 @@ function winConditionP1 () {
     } 
 }
 
+// WINCON Player 2
 function winConditionP2 () {
     if (player2.game.includes(1) && player2.game.includes(4) && player2.game.includes(7)) {
         winMessage(2)
@@ -165,7 +169,5 @@ function winConditionP2 () {
         
     } 
 }
-// DOWNSIDE = SOME CODE ARE ACCESSIBLE GLOBALLY (WHICH IS OPPOSITE OF WHAT THE EXERCISE IS ABOUT)
-// THEREFORE TRY TO OPTIMIZE CODE FOR SECURITY (USING MODULUS, FACTORIES ETC ETC)
 
 
