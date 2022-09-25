@@ -42,14 +42,22 @@ let ticTacToe = (function () {
     let winner = []
 
     function resetGame () {
+
+        if (winner[0] === "P1" || winner[0] === "P2") {
+            let removeMsg = document.getElementById("winMsg")
+            removeMsg.remove()
+        }
+
+        if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
+            let removeTieMsg = document.getElementById("tieMsg")
+            removeTieMsg.remove()
+        }
+
         winner = []
         gameBoard.gamePlay = []
         player1.game = []
         player2.game = []
-
-        let removeMsg = document.getElementById("winMsg")
-        removeMsg.remove()
-
+        
         boxes = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
         for (let i = 0; i < boxes.length; i++) {
             boxes[i].textContent = ""
@@ -64,6 +72,14 @@ let ticTacToe = (function () {
         winner.push(`P${num}`)
     }
 
+    function tieMessage () {
+        let tieMsg = document.createElement("div")
+        tieMsg.id = "tieMsg"
+        tieMsg.textContent = "Game Tied!"
+        header.appendChild(tieMsg)
+
+    }
+
     // GAMEPLAY
     for (let i = 0; i < boxes.length; i++) { 
         boxes[i].addEventListener("click", () => {
@@ -76,6 +92,7 @@ let ticTacToe = (function () {
                     // Check wincon here 
                     winConditionP1()
                     winConditionP2()
+                    tied()
 
                     // If game over
                     if (winner[0] === "P1" || winner[0] === "P2") {
@@ -91,6 +108,19 @@ let ticTacToe = (function () {
                         })
                     }
 
+                    if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
+                        boxes = []
+
+                        let reset = document.createElement("button")
+                        reset.textContent = "RESET"
+                        footer.appendChild(reset)
+
+                        reset.addEventListener("click", () => {
+                            footer.removeChild(reset)
+                            resetGame()
+                        })
+                    }
+
                 } else {
                     gameBoard.gamePlay.push("X")
                     boxes[i].textContent = "X"
@@ -99,6 +129,7 @@ let ticTacToe = (function () {
                     // Check wincon here
                     winConditionP1()
                     winConditionP2()
+                    tied()
                     
                     // If game over
                     if (winner[0] === "P1" || winner[0] === "P2") {
@@ -113,9 +144,28 @@ let ticTacToe = (function () {
                             resetGame()
                         })
                     }
+
+                    if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
+                        boxes = []
+
+                        let reset = document.createElement("button")
+                        reset.textContent = "RESET"
+                        footer.appendChild(reset)
+
+                        reset.addEventListener("click", () => {
+                            footer.removeChild(reset)
+                            resetGame()
+                        })
+                    }
                 }
             } 
         })
+    }
+
+    function tied() {
+        if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
+            tieMessage()
+        }
     }
 
     //WINCON Player 1
