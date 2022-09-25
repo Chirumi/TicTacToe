@@ -1,6 +1,4 @@
 // Design game!
-// Add styles on bg, reset button and game winner/tie announce
-// Add effect: eventListener on hover
 // Add effect: if clicked, box magnifies
 // Add effect: X and O appears smoothly when placed on boxes
 // Add effect: reset button appears smooth
@@ -42,11 +40,22 @@ let ticTacToe = (function () {
     let player2 = playerMaker("Enemy", [])
     let winner = []
 
+    for (let i = 0; i < boxes.length; i++) {
+        boxes[i].addEventListener("mouseover", (event) => {
+            event.target.style.backgroundColor = "rgb(253, 229, 163)"
+
+        })
+        boxes[i].addEventListener("mouseout", (event) => {
+            event.target.style.backgroundColor = ""
+
+        })
+    }
+
     function resetGame () {
 
         if (winner[0] === "P1" || winner[0] === "P2") {
-            let removeMsg = document.getElementById("winMsg")
-            removeMsg.remove()
+            let removeMsg = document.getElementById("winnerAnnounce")
+            removeMsg.textContent = "Click the boxes!"
         }
 
         if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
@@ -66,8 +75,7 @@ let ticTacToe = (function () {
     }
 
     function winMessage (num) {
-        let winMsg = document.createElement("div")
-        winMsg.id = "winMsg"
+        let winMsg = document.getElementById("winnerAnnounce")
         winMsg.textContent = `Player ${num} wins!`
         header.appendChild(winMsg)
         winner.push(`P${num}`)
@@ -86,6 +94,7 @@ let ticTacToe = (function () {
 
         let reset = document.createElement("button")
         reset.textContent = "RESET"
+        reset.classList.add("btn")
         footer.appendChild(reset)
 
         reset.addEventListener("click", () => {
