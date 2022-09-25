@@ -80,6 +80,19 @@ let ticTacToe = (function () {
 
     }
 
+    function gameOver() {
+        boxes = []
+
+        let reset = document.createElement("button")
+        reset.textContent = "RESET"
+        footer.appendChild(reset)
+
+        reset.addEventListener("click", () => {
+            footer.removeChild(reset)
+            resetGame()
+        })
+    }
+
     // GAMEPLAY
     for (let i = 0; i < boxes.length; i++) { 
         boxes[i].addEventListener("click", () => {
@@ -96,29 +109,11 @@ let ticTacToe = (function () {
 
                     // If game over
                     if (winner[0] === "P1" || winner[0] === "P2") {
-                        boxes = []
-
-                        let reset = document.createElement("button")
-                        reset.textContent = "RESET"
-                        footer.appendChild(reset)
-                        
-                        reset.addEventListener("click", () => {
-                            footer.removeChild(reset)
-                            resetGame()
-                        })
+                        gameOver()
                     }
 
                     if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
-                        boxes = []
-
-                        let reset = document.createElement("button")
-                        reset.textContent = "RESET"
-                        footer.appendChild(reset)
-
-                        reset.addEventListener("click", () => {
-                            footer.removeChild(reset)
-                            resetGame()
-                        })
+                        gameOver()
                     }
 
                 } else {
@@ -133,35 +128,18 @@ let ticTacToe = (function () {
                     
                     // If game over
                     if (winner[0] === "P1" || winner[0] === "P2") {
-                        boxes = []
-
-                        let reset = document.createElement("button")
-                        reset.textContent = "RESET"
-                        footer.appendChild(reset)
-
-                        reset.addEventListener("click", () => {
-                            footer.removeChild(reset)
-                            resetGame()
-                        })
+                        gameOver()
                     }
 
                     if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
-                        boxes = []
-
-                        let reset = document.createElement("button")
-                        reset.textContent = "RESET"
-                        footer.appendChild(reset)
-
-                        reset.addEventListener("click", () => {
-                            footer.removeChild(reset)
-                            resetGame()
-                        })
+                        gameOver()
                     }
                 }
             } 
         })
     }
 
+    // TIECON
     function tied() {
         if (gameBoard.gamePlay.length > 8 && winner.length === 0) {
             tieMessage()
