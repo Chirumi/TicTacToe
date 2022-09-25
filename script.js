@@ -1,4 +1,9 @@
 // Design game!
+// Add styles on bg, reset button and game winner/tie announce
+// Add effect: eventListener on hover
+// Add effect: if clicked, box magnifies
+// Add effect: X and O appears smoothly when placed on boxes
+// Add effect: reset button appears smooth
 
 let ticTacToe = (function () {
     let gameBoard = {
