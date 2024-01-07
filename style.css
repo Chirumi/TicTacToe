@@ -3,13 +3,39 @@
     margin: 0;
 }
 
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.startBtn {
+    color: white;
+    border-style: none;
+    border-radius: 15px;
+    background-color: rgb(44, 44, 44);
+    font-size: 35px;
+    font-weight: bolder;
+    padding: 20px 30px;
+    transition: 0.3s;
+}
+
+.startBtn:hover {
+    color: rgb(44, 44, 44);
+    background-color: white;
+    transition: 0.3s;
+}
+
 .board {
-    display: grid;
-    grid-template-columns: repeat(3, 100px);
+    display: none;
+    grid-template-columns: repeat(3, 125px);
 }
 
 .board > div {
     border: 1px solid black;
-    height: 100px;
-    width: 100px;
+    height: 125px;
+    width: 125px;
 }

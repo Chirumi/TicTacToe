@@ -1,4 +1,18 @@
-let div = document.querySelectorAll(".board > div")
+/*
+TO DO =
+1) ADD START BUTTON SO BOARD APPEARS AND START BUTTON DISAPPEARS
+2) ADD RESTART BUTTON ONCE THE GAME ENDS TO CLEAR BOARD DISPLAY, BOARD ARRAY AND BOARD SEQ ARRAY
+3) ADD CONGRATS MESSAGE ONCE GAME ENDS OTHERWISE TIE MESSAGE
+4) ALLOW PLAYERS TO ADD NAMES BEFORE THE GAME START, THEN DISPLAY WHO'S TURN IT IS
+*/
+const displayBoard = document.querySelector(".board")
+const div = document.querySelectorAll(".board > div")
+const startBtn = document.querySelector(".startBtn")
+
+startBtn.addEventListener("click", () => {
+    displayBoard.style.display = "grid"
+    startBtn.style.display = "none"
+})
 
 div.forEach((x) => {
     x.addEventListener("click", () => {
@@ -17,9 +31,10 @@ div.forEach((x) => {
             gameBoard.boardSequence.push("X")
             gameBoard.board[x.className] = "X"
         }
-        
+
         winCheck.playerOneWin()
         winCheck.playerTwoWIn()
+        // TIE CONDITION AND GAME OVER ON EACH CLICK
         if (gameBoard.boardSequence.length == 9) {
             console.log("GAME TIED!")
         }
