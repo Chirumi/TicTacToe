@@ -2,20 +2,30 @@ let div = document.querySelectorAll(".board > div")
 
 div.forEach((x) => {
     x.addEventListener("click", () => {
-        if (gameBoard.board[gameBoard.board.length - 1] == "X") {
-            
+        if (gameBoard.boardSequence.length == 0) {
+            x.textContent = "X"
+            gameBoard.boardSequence.push("X")
+            gameBoard.board[x.className] = "X"
         }
+        else if (gameBoard.boardSequence[gameBoard.boardSequence.length - 1] == "X" && x.textContent == "") {
+            x.textContent = "O"
+            gameBoard.boardSequence.push("O")
+            gameBoard.board[x.className] = "O"
+        } 
+        else if ((gameBoard.boardSequence[gameBoard.boardSequence.length - 1] == "O" && x.textContent == "")){
+            x.textContent = "X"
+            gameBoard.boardSequence.push("X")
+            gameBoard.board[x.className] = "X"
+        }
+        console.log(gameBoard.board)
+        winCheck.playerOneWin()
+        winCheck.playerTwoWIn()
     })
 })
 
 const gameBoard = {
-    board: ["X","O","X"]
-}
-
-function displayUpdate() {
-    div.forEach((x) => {
-        x.textContent = gameBoard.board[x.className]
-    })
+    board: [],
+    boardSequence: []
 }
 
 const winCheck = {
@@ -24,31 +34,31 @@ const winCheck = {
             playerOne.score++
             console.log(`Player One wins! Score: ${playerOne.score}`)
         }
-        else if (gameBoard.board[1] == "X" && gameBoard.board[5] == "X" && gameBoard.board[9] == "X") {
+        else if (gameBoard.board[0] == "X" && gameBoard.board[4] == "X" && gameBoard.board[8] == "X") {
             playerOne.score++
             console.log(`Player One wins! Score: ${playerOne.score}`)
         }
-        else if (gameBoard.board[2] == "X" && gameBoard.board[5] == "X" && gameBoard.board[8] == "X") {
-            playerOne.score++
-            console.log(`Player One wins! Score: ${playerOne.score}`)            
-        }
-        else if (gameBoard.board[3] == "X" && gameBoard.board[5] == "X" && gameBoard.board[7] == "X") {
-            playerOne.score++
-            console.log(`Player One wins! Score: ${playerOne.score}`)           
-        }
-        else if (gameBoard.board[4] == "X" && gameBoard.board[5] == "X" && gameBoard.board[6] == "X") {
-            playerOne.score++
-            console.log(`Player One wins! Score: ${playerOne.score}`)            
-        }
-        else if (gameBoard.board[3] == "X" && gameBoard.board[6] == "X" && gameBoard.board[9] == "X") {
-            playerOne.score++
-            console.log(`Player One wins! Score: ${playerOne.score}`)           
-        }
         else if (gameBoard.board[1] == "X" && gameBoard.board[4] == "X" && gameBoard.board[7] == "X") {
+            playerOne.score++
+            console.log(`Player One wins! Score: ${playerOne.score}`)            
+        }
+        else if (gameBoard.board[2] == "X" && gameBoard.board[4] == "X" && gameBoard.board[6] == "X") {
+            playerOne.score++
+            console.log(`Player One wins! Score: ${playerOne.score}`)           
+        }
+        else if (gameBoard.board[3] == "X" && gameBoard.board[4] == "X" && gameBoard.board[5] == "X") {
+            playerOne.score++
+            console.log(`Player One wins! Score: ${playerOne.score}`)            
+        }
+        else if (gameBoard.board[4] == "X" && gameBoard.board[5] == "X" && gameBoard.board[8] == "X") {
+            playerOne.score++
+            console.log(`Player One wins! Score: ${playerOne.score}`)           
+        }
+        else if (gameBoard.board[0] == "X" && gameBoard.board[3] == "X" && gameBoard.board[6] == "X") {
             playerOne.score++
             console.log(`Player One wins! Score: ${playerOne.score}`)          
         }
-        else if (gameBoard.board[7] == "X" && gameBoard.board[8] == "X" && gameBoard.board[9] == "X") {
+        else if (gameBoard.board[6] == "X" && gameBoard.board[7] == "X" && gameBoard.board[8] == "X") {
             playerOne.score++
             console.log(`Player One wins! Score: ${playerOne.score}`)           
         }
@@ -62,31 +72,31 @@ const winCheck = {
             playerTwo.score++
             console.log(`Player Two wins! Score: ${playerTwo.score}`)
         }
-        else if (gameBoard.board[1] == "O" && gameBoard.board[5] == "O" && gameBoard.board[7] == "O") {
-            playerTwo.score++
-            console.log(`Player Two wins! Score: ${playerTwo.score}`)
-        }
-        else if (gameBoard.board[2] == "O" && gameBoard.board[5] == "O" && gameBoard.board[8] == "O") {
-            playerTwo.score++
-            console.log(`Player Two wins! Score: ${playerTwo.score}`)     
-        }
-        else if (gameBoard.board[3] == "O" && gameBoard.board[5] == "O" && gameBoard.board[7] == "O") {
-            playerTwo.score++
-            console.log(`Player Two wins! Score: ${playerTwo.score}`) 
-        }
-        else if (gameBoard.board[4] == "O" && gameBoard.board[5] == "O" && gameBoard.board[6] == "O") {
-            playerTwo.score++
-            console.log(`Player Two wins! Score: ${playerTwo.score}`)
-        }
-        else if (gameBoard.board[3] == "O" && gameBoard.board[6] == "O" && gameBoard.board[9] == "O") {
+        else if (gameBoard.board[0] == "O" && gameBoard.board[4] == "O" && gameBoard.board[6] == "O") {
             playerTwo.score++
             console.log(`Player Two wins! Score: ${playerTwo.score}`)
         }
         else if (gameBoard.board[1] == "O" && gameBoard.board[4] == "O" && gameBoard.board[7] == "O") {
             playerTwo.score++
+            console.log(`Player Two wins! Score: ${playerTwo.score}`)     
+        }
+        else if (gameBoard.board[2] == "O" && gameBoard.board[4] == "O" && gameBoard.board[6] == "O") {
+            playerTwo.score++
+            console.log(`Player Two wins! Score: ${playerTwo.score}`) 
+        }
+        else if (gameBoard.board[3] == "O" && gameBoard.board[4] == "O" && gameBoard.board[5] == "O") {
+            playerTwo.score++
             console.log(`Player Two wins! Score: ${playerTwo.score}`)
         }
-        else if (gameBoard.board[7] == "O" && gameBoard.board[8] == "O" && gameBoard.board[9] == "O") {
+        else if (gameBoard.board[2] == "O" && gameBoard.board[5] == "O" && gameBoard.board[8] == "O") {
+            playerTwo.score++
+            console.log(`Player Two wins! Score: ${playerTwo.score}`)
+        }
+        else if (gameBoard.board[0] == "O" && gameBoard.board[3] == "O" && gameBoard.board[6] == "O") {
+            playerTwo.score++
+            console.log(`Player Two wins! Score: ${playerTwo.score}`)
+        }
+        else if (gameBoard.board[6] == "O" && gameBoard.board[7] == "O" && gameBoard.board[8] == "O") {
             playerTwo.score++
             console.log(`Player Two wins! Score: ${playerTwo.score}`)
         }
