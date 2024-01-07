@@ -1,5 +1,21 @@
+let div = document.querySelectorAll(".board > div")
+
+div.forEach((x) => {
+    x.addEventListener("click", () => {
+        if (gameBoard.board[gameBoard.board.length - 1] == "X") {
+            
+        }
+    })
+})
+
 const gameBoard = {
-    board: []
+    board: ["X","O","X"]
+}
+
+function displayUpdate() {
+    div.forEach((x) => {
+        x.textContent = gameBoard.board[x.className]
+    })
 }
 
 const winCheck = {
@@ -36,6 +52,9 @@ const winCheck = {
             playerOne.score++
             console.log(`Player One wins! Score: ${playerOne.score}`)           
         }
+        else if (gameBoard.board.length == 9) {
+            console.log("GAME TIED!")
+        }
     },
 
     playerTwoWIn: () => {
@@ -71,7 +90,10 @@ const winCheck = {
             playerTwo.score++
             console.log(`Player Two wins! Score: ${playerTwo.score}`)
         }
-    }
+        else if (gameBoard.board.length == 9) {
+            console.log("GAME TIED!")
+        }
+    },
 }
 
 function player(name) {
