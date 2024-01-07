@@ -17,9 +17,12 @@ div.forEach((x) => {
             gameBoard.boardSequence.push("X")
             gameBoard.board[x.className] = "X"
         }
-        console.log(gameBoard.board)
+        
         winCheck.playerOneWin()
         winCheck.playerTwoWIn()
+        if (gameBoard.boardSequence.length == 9) {
+            console.log("GAME TIED!")
+        }
     })
 })
 
@@ -62,9 +65,6 @@ const winCheck = {
             playerOne.score++
             console.log(`Player One wins! Score: ${playerOne.score}`)           
         }
-        else if (gameBoard.board.length == 9) {
-            console.log("GAME TIED!")
-        }
     },
 
     playerTwoWIn: () => {
@@ -100,10 +100,7 @@ const winCheck = {
             playerTwo.score++
             console.log(`Player Two wins! Score: ${playerTwo.score}`)
         }
-        else if (gameBoard.board.length == 9) {
-            console.log("GAME TIED!")
-        }
-    },
+    }
 }
 
 function player(name) {
