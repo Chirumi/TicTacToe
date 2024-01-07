@@ -8,10 +8,12 @@ TO DO =
 const displayBoard = document.querySelector(".board")
 const div = document.querySelectorAll(".board > div")
 const startBtn = document.querySelector(".startBtn")
+const title = document.querySelector(".start > div:first-of-type")
 
 startBtn.addEventListener("click", () => {
     displayBoard.style.display = "grid"
     startBtn.style.display = "none"
+    title.style.display = "none"
 })
 
 div.forEach((x) => {

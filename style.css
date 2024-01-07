@@ -1,15 +1,28 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+.container {
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
+    padding-top: 20vh;
+    gap: 20px;
+}
+
+.start {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+.start > div {
+    font-size: 80px;
+    font-weight: bolder;
 }
 
 .startBtn {
@@ -25,6 +38,7 @@ body {
 
 .startBtn:hover {
     color: rgb(44, 44, 44);
+    border: 1px solid black;
     background-color: white;
     transition: 0.3s;
 }
