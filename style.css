@@ -7,7 +7,7 @@
 .container {
     display: flex;
     justify-content: center;
-    padding-top: 20vh;
+    padding-top: 15vh;
 }
 
 .boardContainer {
@@ -51,9 +51,14 @@
     display: none;
 }
 
+.gameOverMsg {
+    height: 30px;
+}
+
 .board {
     display: none;
     grid-template-columns: repeat(3, 125px);
+    margin-top: 30px;
     margin-bottom: 25px;
 }
 

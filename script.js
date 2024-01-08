@@ -5,6 +5,7 @@ TO DO =
 4) ALLOW PLAYERS TO ADD NAMES BEFORE THE GAME START, THEN DISPLAY WHO'S TURN IT IS
 */
 const displayBoard = document.querySelector(".board")
+const gameOverMsg = document.querySelector(".gameOverMsg")
 const p = displayBoard.parentNode
 const blockClicks = document.createElement("div")
 const div = document.querySelectorAll(".board > div")
@@ -31,6 +32,9 @@ function disableGame() {
         gameBoard.board = []
         gameBoard.boardSequence = []
         gameBoard.gameFinish = false
+        gameBoard.roundWinner = ""
+        gameOverMsg.textContent = ""
+        restartBtn.style.display = "none"
 
         // REMOVE WRAPPER THAT PREVENTS CLICKS ON BOARD
         const wrapperNode = document.querySelector(".wrapper")
@@ -45,7 +49,8 @@ function disableGame() {
 const gameBoard = {
     board: [], 
     boardSequence: [], // SETS X FIRST THEN O THEN X ETC
-    gameFinish: false
+    gameFinish: false,
+    roundWinner: ""
 }
 
 div.forEach((x) => {
@@ -71,6 +76,15 @@ div.forEach((x) => {
         winCheck.tie()
         if (gameBoard.gameFinish == true) {
             disableGame()
+            if (gameBoard.roundWinner == "Player One") {
+                gameOverMsg.textContent = "Player One wins!"
+            }
+            else if (gameBoard.roundWinner == "Player Two") {
+                gameOverMsg.textContent = "Player Two wins!"
+            }
+            else if (gameBoard.roundWinner == "Tie") {
+                gameOverMsg.textContent = "Tied!"
+            }
         }
     }
     x.addEventListener("click", clickEvent)
@@ -134,17 +148,20 @@ const winCheck = {
     tie: () => {
         if (gameBoard.boardSequence.length == 9) {
             gameBoard.gameFinish = true
+            gameBoard.roundWinner = "Tie"
         }
     }
 }
 
 function playerOneResult() {
     playerOne.score++
+    gameBoard.roundWinner = "Player One"
     gameBoard.gameFinish = true
 }
 
 function playerTwoResult() {
     playerTwo.score++
+    gameBoard.roundWinner = "Player Two"
     gameBoard.gameFinish = true
 }
 
