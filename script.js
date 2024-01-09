@@ -1,7 +1,3 @@
-/*
-TO DO =
-4) ALLOW PLAYERS TO ADD NAMES BEFORE THE GAME START, THEN DISPLAY WHO'S TURN IT IS
-*/
 const displayBoard = document.querySelector(".board")
 const gameOverMsg = document.querySelector(".gameOverMsg")
 const p = displayBoard.parentNode
@@ -9,7 +5,10 @@ const blockClicks = document.createElement("div")
 const div = document.querySelectorAll(".board > div")
 const startBtn = document.querySelector(".startBtn")
 const title = document.querySelector(".start > div:first-of-type")
-const restartBtn = document.querySelector(".restartBtn")
+const nextRoundBtn = document.querySelector(".nextRoundBtn")
+const header = document.querySelector(".header")
+const playerOneScore = document.querySelector(".playerOneScore")
+const playerTwoScore = document.querySelector(".playerTwoScore")
 
 const gameBoard = {
     board: [], 
@@ -20,6 +19,9 @@ const gameBoard = {
 
 startBtn.addEventListener("click", () => {
     displayBoard.style.display = "grid"
+    header.style.display = "flex"
+    playerOneScore.textContent = "Player One: 0"
+    playerTwoScore.textContent = "Player Two: 0"
     startBtn.style.display = "none"
     title.style.display = "none"
 })
@@ -30,14 +32,14 @@ function disableGame() {
     blockClicks.appendChild(displayBoard)
     blockClicks.classList.add("wrapper")
 
-    restartBtn.style.display = "block"
-    restartBtn.addEventListener("click", () => {
+    nextRoundBtn.style.display = "block"
+    nextRoundBtn.addEventListener("click", () => {
         gameBoard.board = []
         gameBoard.boardSequence = []
         gameBoard.gameFinish = false
         gameBoard.roundWinner = ""
         gameOverMsg.textContent = ""
-        restartBtn.style.display = "none"
+        nextRoundBtn.style.display = "none"
 
         // REMOVE WRAPPER THAT PREVENTS CLICKS ON BOARD
         const wrapperNode = document.querySelector(".wrapper")
@@ -75,6 +77,8 @@ div.forEach((x) => {
 
         if (gameBoard.gameFinish == true) {
             disableGame()
+            playerOneScore.textContent = `Player One: ${playerOne.score}`
+            playerTwoScore.textContent = `Player Two: ${playerTwo.score}`
             if (gameBoard.roundWinner == "Player One") {
                 gameOverMsg.textContent = "Player One wins!"
             }
