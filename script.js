@@ -1,7 +1,5 @@
 /*
 TO DO =
-2) ADD RESTART BUTTON ONCE THE GAME ENDS TO CLEAR BOARD DISPLAY, BOARD ARRAY AND BOARD SEQ ARRAY
-3) ADD CONGRATS MESSAGE ONCE GAME ENDS OTHERWISE TIE MESSAGE
 4) ALLOW PLAYERS TO ADD NAMES BEFORE THE GAME START, THEN DISPLAY WHO'S TURN IT IS
 */
 const displayBoard = document.querySelector(".board")
@@ -13,13 +11,18 @@ const startBtn = document.querySelector(".startBtn")
 const title = document.querySelector(".start > div:first-of-type")
 const restartBtn = document.querySelector(".restartBtn")
 
-startBtn.addEventListener("click", startBtnEventListener)
+const gameBoard = {
+    board: [], 
+    boardSequence: [], // SETS X FIRST THEN O THEN X ETC
+    gameFinish: false,
+    roundWinner: ""
+}
 
-function startBtnEventListener() {
+startBtn.addEventListener("click", () => {
     displayBoard.style.display = "grid"
     startBtn.style.display = "none"
     title.style.display = "none"
-}
+})
 
 function disableGame() {
     blockClicks.style.pointerEvents = "none"
@@ -46,15 +49,10 @@ function disableGame() {
     })
 }
 
-const gameBoard = {
-    board: [], 
-    boardSequence: [], // SETS X FIRST THEN O THEN X ETC
-    gameFinish: false,
-    roundWinner: ""
-}
-
+// ADDS CLICK EVENTS AND WINCON/TIE CHECKER TO GRID ITEMS
 div.forEach((x) => {
-    function clickEvent() {
+    x.addEventListener("click", () => {
+        // CONTROLS TURNS, WITH X GOING FIRST
         if (gameBoard.boardSequence.length == 0) {
             x.textContent = "X"
             gameBoard.boardSequence.push("X")
@@ -74,6 +72,7 @@ div.forEach((x) => {
         winCheck.playerOneWin()
         winCheck.playerTwoWIn()
         winCheck.tie()
+
         if (gameBoard.gameFinish == true) {
             disableGame()
             if (gameBoard.roundWinner == "Player One") {
@@ -86,8 +85,7 @@ div.forEach((x) => {
                 gameOverMsg.textContent = "Tied!"
             }
         }
-    }
-    x.addEventListener("click", clickEvent)
+    })
 })
 
 const winCheck = {
