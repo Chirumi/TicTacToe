@@ -124,7 +124,7 @@ const winCheck = {
         if (gameBoard.board[0] == "O" && gameBoard.board[1] == "O" && gameBoard.board[2] == "O") {
             playerTwoResult()
         }
-        else if (gameBoard.board[0] == "O" && gameBoard.board[4] == "O" && gameBoard.board[6] == "O") {
+        else if (gameBoard.board[0] == "O" && gameBoard.board[4] == "O" && gameBoard.board[8] == "O") {
             playerTwoResult()
         }
         else if (gameBoard.board[1] == "O" && gameBoard.board[4] == "O" && gameBoard.board[7] == "O") {
